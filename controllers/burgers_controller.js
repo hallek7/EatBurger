@@ -6,6 +6,7 @@ var burger = require("../models/burgers");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
+  console.log("get")
   burger.all(function(data) {
     var hbsObject = {
       burgers: data
@@ -16,6 +17,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
+  console.log("post")
   burger.create([
     "burger_name", "devoured"
   ], [
@@ -26,6 +28,7 @@ router.post("/", function(req, res) {
 });
 
 router.put("/:id", function(req, res) {
+  console.log("put")
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
@@ -38,9 +41,10 @@ router.put("/:id", function(req, res) {
 });
 
 router.delete("/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+  console.log("delete")
+  // var condition = "id = " + req.params.id;
 
-  burger.delete(condition, function() {
+  burger.delete(req.params.id, function() {
     res.redirect("/");
   });
 });

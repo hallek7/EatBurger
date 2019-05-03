@@ -43,7 +43,11 @@
 			      <li>
 			      	{{this.id}}
 			        {{this.burger_name}}
-
+							
+ 			      
+  <form action="/{{this.id}}?_method=DELETE" method="POST">	
+<button type="submit"> Remove </button> 
+ </form>
 			      </li>
 			    {{/if}}
 			  {{/each}}

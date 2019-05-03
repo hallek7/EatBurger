@@ -36,6 +36,18 @@ var orm = {
       cb(result);
     });
   },
+
+  delete: function (table, rowid, cb) { 
+    var queryString = "delete from " + table+"  where id = "+ rowid+";";
+      
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+      cb(result);
+    });
+   },
+
   create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
